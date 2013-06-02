@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Pages\MenuPage.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Pages\MenuPage.cs" Line="98" Column="1" />
+      <File FileName="Assets\Scripts\BaseMain.cs" Line="25" Column="47" />
+      <File FileName="Assets\Plugins\Futile\Core\FScreen.cs" Line="163" Column="8" />
+      <File FileName="Assets\Plugins\Futile\Display\FSprite.cs" Line="181" Column="1" />
+      <File FileName="Assets\Plugins\Futile\Core\FutileParams.cs" Line="13" Column="14" />
+      <File FileName="Assets\Plugins\Futile\Futile.cs" Line="255" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Phil\Documents\GitHub\main_menu\Assets\Scripts\Pages\MenuPage.cs" line="212" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

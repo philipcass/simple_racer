@@ -11,9 +11,6 @@ public class MenuPage : BPage {
     Color tone1 = Color.black;
     Color tone2;
     
-    string gameTitle = "TreeBlaster";
-    string subtitle = "2424";
-    
     override public void Start() {
         tone2 = GameUtils.HexToColor("00E850");
         FSprite leftSide = new FSprite(Futile.whiteElement);
@@ -128,6 +125,6 @@ public class MenuPage : BPage {
     
     void LoadGamePage (AbstractTween hurr)
     {
-        BaseMain.Instance.GoToPage(BPageType.InGamePage);
+        //BaseMain.Instance.GoToPage(BPageType.InGamePage);
     }
 }

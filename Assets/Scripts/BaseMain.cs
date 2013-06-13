@@ -4,6 +4,7 @@ using System.Collections;
 public enum BPageType {
     None,
     MenuPage,
+    InGamePage,
 }
 
 public class BaseMain : MonoBehaviour {
@@ -38,6 +39,8 @@ public class BaseMain : MonoBehaviour {
 
         if(pageType == BPageType.MenuPage) {
             pageToCreate = new MenuPage();
+        }else if(pageType == BPageType.InGamePage) {
+            pageToCreate = new InGamePage();
         }
 
         if(pageToCreate != null) { //destroy the old page and create a new one

@@ -7,7 +7,6 @@ public class MenuPage : BPage {
     
     List<FButton> menuElements = new List<FButton>();
     SfxrSynth synth = new SfxrSynth();
-    
     Color tone1 = Color.black;
     Color tone2;
     
@@ -37,6 +36,7 @@ public class MenuPage : BPage {
     }
  
     FSprite selector = new FSprite(Futile.whiteElement.name);
+
     public void setupMenu() {
         FContainer menuSelector = new FContainer();
         menuSelector.x = Futile.screen.width * 0.3f;
@@ -44,7 +44,7 @@ public class MenuPage : BPage {
         
         selector.color = tone1;
         selector.height = 48;
-        selector.width = Futile.screen.width*2;
+        selector.width = Futile.screen.width * 2;
         menuSelector.AddChild(selector);
         
         FButton toAdd;
@@ -87,8 +87,8 @@ public class MenuPage : BPage {
     void HandleUpdate() {
         synth.parameters.SetSettingsString("2,,0.166,,0.1806,0.4482,,,,,,,,,,,,,1,,,0.1,,0.5");
 
-        if(true){
-            if(Input.GetKeyUp(KeyCode.S) && menuIndex < menuElements.Count -1) {
+        if(true) {
+            if(Input.GetKeyUp(KeyCode.S) && menuIndex < menuElements.Count - 1) {
                 menuElements[menuIndex].label.color = tone1;
                 menuIndex++;
                 inputEnabled = false;
@@ -106,7 +106,7 @@ public class MenuPage : BPage {
             
             if(Input.GetKeyUp(KeyCode.Space)) {
                 inputEnabled = false;
-                Go.to(selector, 1, new TweenConfig().setEaseType(EaseType.QuadOut).colorProp("color", tone2).floatProp("height", Futile.screen.height*2).onComplete(LoadGamePage));
+                Go.to(selector, 1, new TweenConfig().setEaseType(EaseType.QuadOut).colorProp("color", tone2).floatProp("height", Futile.screen.height * 2).onComplete(LoadGamePage));
                 menuElements.ForEach(delegate(FButton b)
                 {
                     b.label.color = tone2;
@@ -117,14 +117,12 @@ public class MenuPage : BPage {
         }
     }
 
-    void hurr (AbstractTween hurr)
-    {
+    void hurr(AbstractTween hurr) {
         menuElements[menuIndex].label.color = tone2;
         inputEnabled = true;
     }
     
-    void LoadGamePage (AbstractTween hurr)
-    {
-        //BaseMain.Instance.GoToPage(BPageType.InGamePage);
+    void LoadGamePage(AbstractTween hurr) {
+        BaseMain.Instance.GoToPage(BPageType.InGamePage);
     }
 }

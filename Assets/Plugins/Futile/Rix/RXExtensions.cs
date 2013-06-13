@@ -74,7 +74,7 @@ public static class RectExtensions
 	//general idea from here: http://stackoverflow.com/questions/1343346/calculate-a-vector-from-the-center-of-a-square-to-edge-based-on-radius
 	//(but greatly cleaned up and simplified)
 	//this is different from GetPointLimitedToInterior because it takes the angle into consideration
-	public static Vector2 GetInteriorPointClosestToTargetPoint(this Rect rect, Vector2 targetPoint)
+	public static Vector2 GetClosestInteriorPointAlongDeltaVector(this Rect rect, Vector2 targetPoint)
 	{
 		//if it's inside the rect, don't do anything
 		if(	targetPoint.x >= rect.xMin &&
@@ -100,13 +100,27 @@ public static class RectExtensions
 	}
 	
 	//this simply ensures that none of the point values are over the max and min
-	public static Vector2 GetPointLimitedToInterior(this Rect rect, Vector2 targetPoint)
+	public static Vector2 GetClosestInteriorPoint(this Rect rect, Vector2 targetPoint)
 	{
 		return new Vector2
 		(
-				Mathf.Max (rect.xMin, Mathf.Min(rect.xMax,targetPoint.x)),
-				Mathf.Max (rect.yMin, Mathf.Min(rect.yMax,targetPoint.y))
+				Mathf.Clamp(targetPoint.x, rect.xMin, rect.xMax),
+				Mathf.Clamp(targetPoint.y, rect.yMin, rect.yMax)
 		);
+	}
+	
+	// NOTE: Rect MUST be axis-aligned for this check
+	public static bool CheckIntersectWithCircle(this Rect rect, RXCircle circle)
+	{
+		// Find the closest point to the circle center that's within the rectangle
+		Vector2 closest = GetClosestInteriorPoint(rect, circle.center);
+		
+		// Calculate the distance between the circle's center and this closest point
+		Vector2 deltaToClosest = circle.center - closest;
+		
+		// If the distance is less than the circle's radius, an intersection occurs
+		bool intersection = (deltaToClosest.sqrMagnitude <= circle.radiusSquared);
+		return intersection;
 	}
 }
 
@@ -116,6 +130,17 @@ public static class GoKitExtensions
 	public static TweenConfig floatProp(this TweenConfig config, string propName, float propValue)
 	{
 		return config.floatProp(propName,propValue,false); 
+	}
+	
+	public static TweenConfig removeWhenComplete(this TweenConfig config)
+	{
+		config.onComplete(HandleRemoveWhenDoneTweenComplete);	
+		return config;
+	}
+	
+	private static void HandleRemoveWhenDoneTweenComplete (AbstractTween tween)
+	{
+		((tween as Tween).target as FNode).RemoveFromContainer();
 	}
 }
 
@@ -140,6 +165,19 @@ public static class ArrayExtensions
 		}	
 		
 		if(wasFound) count--;
+	}
+	
+	public static List<T> ToList<T>(this T[] items)
+	{
+		int itemCount = items.Length;
+		List<T> itemList = new List<T>(itemCount);
+		
+		for(int i = 0; i<itemCount; i++)
+		{
+			itemList.Add(items[i]);
+		}
+		
+		return itemList;
 	}
 }
 

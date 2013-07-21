@@ -39,7 +39,7 @@ public class BaseMain : MonoBehaviour {
 
         if(pageType == BPageType.MenuPage) {
             pageToCreate = new MenuPage();
-        }else if(pageType == BPageType.InGamePage) {
+        } else if(pageType == BPageType.InGamePage) {
             pageToCreate = new InGamePage();
         }
 

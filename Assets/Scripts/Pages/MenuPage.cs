@@ -11,6 +11,7 @@ public class MenuPage : BPage {
     Color tone2;
     
     override public void Start() {
+        ListenForUpdate(HandleUpdate);
         tone2 = GameUtils.HexToColor("00E850");
         FSprite leftSide = new FSprite(Futile.whiteElement);
         leftSide.color = tone1;
@@ -71,16 +72,6 @@ public class MenuPage : BPage {
         return button;
     }
     
-    override public void HandleAddedToStage() {
-        Futile.instance.SignalUpdate += HandleUpdate;
-        base.HandleAddedToStage();  
-    }
-
-    override public void HandleRemovedFromStage() {
-        Futile.instance.SignalUpdate -= HandleUpdate;
-        base.HandleRemovedFromStage();  
-    }
-
     int menuIndex = 0;
     bool inputEnabled = true;
 

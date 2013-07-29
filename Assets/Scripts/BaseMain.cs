@@ -18,7 +18,7 @@ public class BaseMain : MonoBehaviour {
         FutileParams fparams = new FutileParams(true, false, false, false);
 
         fparams.AddResolutionLevel(1024.0f, 1.0f, 1.0f, ""); 
-        fparams.origin = new Vector2(0.5f, 0.5f);
+        fparams.origin = new Vector2(0, 1);
 
         Futile.instance.Init(fparams);
 
@@ -27,7 +27,7 @@ public class BaseMain : MonoBehaviour {
         
         _stage = Futile.stage;
      
-        this.GoToPage(BPageType.MenuPage);
+        this.GoToPage(BPageType.InGamePage);
     }
  
     public void GoToPage(BPageType pageType) {

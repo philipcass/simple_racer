@@ -1,0 +1,3 @@
+[submodule "Assets/Futile/ThirdParty/WEHTiled"]
+	path = Assets/Futile/ThirdParty/WEHTiled
+	url = git@github.com:philipcass/WEHTiled.git

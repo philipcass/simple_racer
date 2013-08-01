@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 class SimpleTimer
 {
-    Stopwatch s;
+    public Stopwatch s;
     public void Start(){
         s = new Stopwatch();
         s.Start();
